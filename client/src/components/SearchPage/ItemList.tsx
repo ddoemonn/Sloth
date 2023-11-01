@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 
 export default function ItemList() {
-    const items: IItem[] = useSelector((state: RootState) => state.Items.items);
+    const items: IItem[] = useSelector((state: RootState) => state.Items.filteredItems);
     return (
-            <ul className='flex flex-wrap  w-8/12 '>
+            <ul className='flex flex-wrap  w-8/12  justify-center [&>*:last-child]:flex-1 '>
             {items.map((item: IItem) => {
             const imageUrl = `http://localhost:4000/api/items/img/${item.imagePath}`;
             return (

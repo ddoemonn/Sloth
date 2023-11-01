@@ -46,7 +46,7 @@ const SortByList: React.FC = () => {
     };
 
     return (
-        <section className='w-2/12 pl-10 font-semibold'>
+        <section className='w-2/12 pl-10 font-semibold mt-6'>
         <h2 className='text-sm text-slate-500'>Sort By</h2>
         <ul>
             <ListItem text='Relevance' isActive={activeItem === 'Relevance'} onClick={() => handleItemClick('Relevance')} />
