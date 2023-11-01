@@ -6,6 +6,7 @@ import { Route, RouteObject, RouterProvider, createBrowserRouter, createRoutesFr
 import Navbar from './components/Navbar';
 import Checkout from './components/Checkout';
 import SearchP from './pages/SearchP';
+import { Providers } from './redux/provider';
 
 
 const routes:  RouteObject[] = createRoutesFromElements(
@@ -31,8 +32,11 @@ const router = createBrowserRouter(routes);
 ReactDOM.createRoot(document.getElementById('root')!).render(
 
     <React.StrictMode>
+        <Providers>
             <RouterProvider router={router}  />
-        <App />
+            <App />
+        </Providers>
+        
     </React.StrictMode>
 
 )
