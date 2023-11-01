@@ -7,12 +7,14 @@ import Navbar from './components/Navbar';
 import Checkout from './components/Checkout';
 import SearchP from './pages/SearchP';
 import { Providers } from './redux/provider';
+import SearchedItemsP from './pages/SearchedItemsP';
 
 
 const routes:  RouteObject[] = createRoutesFromElements(
     <Route path='/' element={<App />}>
         <Route path='/' element={<Navbar />}>
             <Route path='/search' element={<SearchP />} />
+            <Route path='/search/:category' element={<SearchedItemsP />} />
         </Route>
         <Route path='/checkout' element={<Checkout />} >
 

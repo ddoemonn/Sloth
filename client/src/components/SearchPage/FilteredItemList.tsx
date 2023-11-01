@@ -1,10 +1,11 @@
-import React from 'react'
-import { IItem } from '../../types/type';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
+import { useSelector } from "react-redux";
+import { IItem } from "../../types/type";
+import { RootState } from "../../redux/store";
 
-export default function ItemList() {
-    const items: IItem[] = useSelector((state: RootState) => state.Items.items);
+
+const FilteredItemList: React.FC = () => {
+    
+    const items: IItem[] = useSelector((state: RootState) => state.Items.filteredItems);
     return (
             <ul className='flex flex-wrap  w-8/12  justify-center [&>*:last-child]:flex-1 '>
             {items.map((item: IItem) => {
@@ -26,4 +27,6 @@ export default function ItemList() {
             })}
         </ul>
     )
-}
+};
+
+export default FilteredItemList;

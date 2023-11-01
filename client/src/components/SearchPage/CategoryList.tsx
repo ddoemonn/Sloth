@@ -3,17 +3,19 @@ import ListItem from '../ListItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { filterItemsByCategory } from '../../redux/features/itemSlice';
+import { useNavigate } from 'react-router-dom';
 
 const CategoryList: React.FC = () => {
     const items = useSelector((state: RootState) => state.Items.items);
     const dispatch = useDispatch();
     const categories =  useSelector((state: RootState) => state.Items.categories)
     const [activeCategory, setActiveCategory] = useState<string>('');
+    const navigate = useNavigate();
 
     const handleCategoryClick = (category: string) => {
         setActiveCategory(category);
-        dispatch(filterItemsByCategory(category))
-        // Handle category selection logic if needed
+        navigate(`/search/${category}`)
+        //dispatch(filterItemsByCategory(category))
     };
 
     return (
