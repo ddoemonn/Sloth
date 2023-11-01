@@ -1,12 +1,48 @@
 import React, { useState } from 'react';
 import ListItem from '../ListItem';
+import { IItem } from '../../types/type';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { SetItems } from '../../redux/features/itemSlice';
 
 const SortByList: React.FC = () => {
-  const [activeItem, setActiveItem] = useState<string>('Relevance');
+    const [activeItem, setActiveItem] = useState<string>('Relevance');
+    const items = useSelector((state: RootState) => state.Items.items);
+    const dispatch = useDispatch();
+
+    const sortItems = (sortBy: string) => {
+        let sortedArray: IItem[] = [];
+
+        if (sortBy === 'Trending') {
+            sortedArray = items.slice().sort((a, b) => {
+                return b.size.length - a.size.length ;
+            });
+        }
+        else if (sortBy === 'Relevance') {
+            sortedArray = items.slice().sort((a, b) => {
+                return  new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+            });
+        }
+        else if (sortBy === 'Latest arrivals') {
+            sortedArray = items.slice().sort((a, b) => {
+                return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime() ;
+            });
+        }else if (sortBy === 'Price: Low to high') {
+            sortedArray = items.slice().sort((a, b) => {
+                return a.price - b.price;
+            });
+        } else if (sortBy === 'Price: High to low') {
+            sortedArray = items.slice().sort((a, b) => {
+                return b.price - a.price;
+            });
+        }
+
+        if(sortedArray.length > 1) dispatch(SetItems(sortedArray))
+    }
 
     const handleItemClick = (item: string) => {
         setActiveItem(item);
-        // Handle sorting logic based on the clicked item if needed
+        sortItems(item);
     };
 
     return (
