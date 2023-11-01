@@ -2,7 +2,8 @@ import { Outlet } from 'react-router-dom';
 import './style.css'
 import { useDispatch } from 'react-redux';
 import { useCallback, useEffect, useMemo } from 'react';
-import { SetItems } from './redux/features/itemSlice';
+import { SetCategories, SetItems } from './redux/features/itemSlice';
+import { IItem } from './types/type';
 
 const App: React.FC = () => {
     const dispatch = useDispatch();
@@ -16,7 +17,11 @@ const App: React.FC = () => {
     
             //console.log('fetched with useCallback', json)
     
-            if (response.ok) dispatch(SetItems(json))
+            if (response.ok) {
+                dispatch(SetItems(json))
+                const uniqueCategories: string[] = Array.from(new Set(json.map((item: IItem) => item.category)));
+                dispatch(SetCategories(uniqueCategories))
+            }
     
         }
         fetchItems();

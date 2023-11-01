@@ -6,6 +6,7 @@ import { RootState } from '../../redux/store';
 const CategoryList: React.FC = () => {
     const items = useSelector((state: RootState) => state.Items.items);
     const uniqueCategories = Array.from(new Set(items.map(item => item.category)));
+    const categories =  useSelector((state: RootState) => state.Items.categories)
     const [activeCategory, setActiveCategory] = useState<string>('');
 
     const handleCategoryClick = (category: string) => {
@@ -17,7 +18,7 @@ const CategoryList: React.FC = () => {
         <section className='w-2/12 pl-10 font-semibold'>
         <h2 className='text-sm text-slate-500'>Collections</h2>
         <ul className='flex flex-col'>
-            {uniqueCategories.map((category, index) => (
+            {categories.map((category, index) => (
             <ListItem key={index} text={category} isActive={category === activeCategory} onClick={() => handleCategoryClick(category)} />
             ))}
         </ul>
