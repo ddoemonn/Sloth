@@ -5,16 +5,20 @@ import './style.css'
 import { Route, RouteObject, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Checkout from './components/Checkout';
+import SearchP from './pages/SearchP';
 
 
 const routes:  RouteObject[] = createRoutesFromElements(
     <Route path='/' element={<App />}>
         <Route path='/' element={<Navbar />}>
-
+            <Route path='/search' element={<SearchP />} />
         </Route>
         <Route path='/checkout' element={<Checkout />} >
 
         </Route>
+
+        
+        
 
     </Route>,
     

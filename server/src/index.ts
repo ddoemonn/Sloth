@@ -14,7 +14,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     next()
 })
 
-app.use('/api/images', itemRouter)
+app.use('/api/items', itemRouter)
 
 
 // connect to db
