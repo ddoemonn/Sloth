@@ -9,12 +9,14 @@ import SearchP from './pages/SearchP';
 import { Providers } from './redux/provider';
 import SearchedItemsP from './pages/SearchedItemsP';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import ItemDetails from './pages/ItemDetails';
 
 const queryClient = new QueryClient();
 
 const routes:  RouteObject[] = createRoutesFromElements(
     <Route path='/' element={<App />}>
         <Route path='/' element={<Navbar />}>
+            <Route path='/:name' element={<ItemDetails />} />
             <Route path='/search' element={<SearchP />} />
             <Route path='/search/:category' element={<SearchedItemsP />} />
         </Route>

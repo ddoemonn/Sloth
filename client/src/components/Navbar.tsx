@@ -15,10 +15,10 @@ export default function Navbar() {
                     <Link to='/search' className='p-2 m-2 mt-4 text-slate-500 hover:underline cursor-pointer decoration-blue-700  '>
                     All 
                     </Link>
-                    <li className='p-2 m-2 mt-4 text-slate-500 hover:underline cursor-pointer decoration-blue-700  '>
-                        Shirts</li>
-                    <li className='flex-1 p-2 m-2 mt-4 text-slate-500 hover:underline cursor-pointer decoration-blue-700  '>
-                        Drinkware</li>
+                    <Link to='/search/Shirts' className='p-2 m-2 mt-4 text-slate-500 hover:underline cursor-pointer decoration-blue-700  '>
+                        Shirts</Link>
+                    <Link to='/search/Drinkware'  className='flex-1 p-2 m-2 mt-4 text-slate-500 hover:underline cursor-pointer decoration-blue-700  '>
+                        Drinkware</Link>
                     <Search />
                     <li className='p-2 m-2 mt-3 text-2xl hover:text-blue-700 hover:underline cursor-pointer '>
                         <BiCartAlt />
