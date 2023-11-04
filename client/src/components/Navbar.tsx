@@ -5,7 +5,7 @@ import { BiCartAlt } from "react-icons/bi"
 import { Link, Outlet } from 'react-router-dom'
 export default function Navbar() {
     return (
-        <header>
+        <>
             <nav>
                 <ul className='flex font-montserrat p-2 px-6 font-semibold text-sm  '>
                     <li className='p-2 m-2 flex'>
@@ -26,6 +26,7 @@ export default function Navbar() {
                 </ul>
             </nav>
             <Outlet/>
-        </header>
+        </>
+
     )
 }

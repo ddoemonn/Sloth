@@ -23,9 +23,9 @@ const App: React.FC = () => {
 
     React.useEffect(() => {
         if (items) {
-        dispatch(SetItems(items));
-        const uniqueCategories: string[] = Array.from(new Set(items.map((item: IItem) => item.category)));
-        dispatch(SetCategories(uniqueCategories));
+            dispatch(SetItems(items));
+            const uniqueCategories: string[] = Array.from(new Set(items.map((item: IItem) => item.category)));
+            dispatch(SetCategories(uniqueCategories));
         }
     }, [dispatch, items]);
 
