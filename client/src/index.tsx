@@ -8,7 +8,9 @@ import Checkout from './components/Checkout';
 import SearchP from './pages/SearchP';
 import { Providers } from './redux/provider';
 import SearchedItemsP from './pages/SearchedItemsP';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
+const queryClient = new QueryClient();
 
 const routes:  RouteObject[] = createRoutesFromElements(
     <Route path='/' element={<App />}>
@@ -34,10 +36,15 @@ const router = createBrowserRouter(routes);
 ReactDOM.createRoot(document.getElementById('root')!).render(
 
     <React.StrictMode>
+        <QueryClientProvider client={queryClient} >
         <Providers>
+        
             <RouterProvider router={router}  />
             <App />
+        
         </Providers>
+        </QueryClientProvider>
+
         
     </React.StrictMode>
 

@@ -3,7 +3,7 @@ import { IItem } from "../../types/type";
 import { RootState } from "../../redux/store";
 
 
-const FilteredItemList: React.FC = () => {
+export default function FilteredItemList () {
     
     const items: IItem[] = useSelector((state: RootState) => state.Items.filteredItems);
     return (
@@ -29,4 +29,3 @@ const FilteredItemList: React.FC = () => {
     )
 };
 
-export default FilteredItemList;

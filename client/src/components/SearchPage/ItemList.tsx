@@ -10,7 +10,7 @@ export default function ItemList() {
             {items.map((item: IItem) => {
             const imageUrl = `http://localhost:4000/api/items/img/${item.imagePath}`;
             return (
-                <li key={item._id} className='mx-2 my-2'>
+                <li key={item._id} className='mx-2 my-2 w-[300px] h-[400px]'>
                 <aside className='relative aspect-w-1 aspect-h-1'>
                     <img
                     src={imageUrl}

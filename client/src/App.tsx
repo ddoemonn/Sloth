@@ -4,33 +4,43 @@ import { useDispatch } from 'react-redux';
 import { useCallback, useEffect, useMemo } from 'react';
 import { SetCategories, SetItems } from './redux/features/itemSlice';
 import { IItem } from './types/type';
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import axios from 'axios';
+import React from 'react';
+
+
+
+const fetchData = async () => {
+    const response = await axios.get('http://localhost:4000/api/items');
+    return response.data;
+};
+
 
 const App: React.FC = () => {
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        const fetchItems = async () => {
-            const response = await fetch(`http://localhost:4000/api/items`)
-            const json = await response.json();
+    const { data: items, isLoading, isError } = useQuery('items', fetchData);
 
-            console.log('items',json)
-    
-            //console.log('fetched with useCallback', json)
-    
-            if (response.ok) {
-                dispatch(SetItems(json))
-                const uniqueCategories: string[] = Array.from(new Set(json.map((item: IItem) => item.category)));
-                dispatch(SetCategories(uniqueCategories))
-            }
-    
+    React.useEffect(() => {
+        if (items) {
+        dispatch(SetItems(items));
+        const uniqueCategories: string[] = Array.from(new Set(items.map((item: IItem) => item.category)));
+        dispatch(SetCategories(uniqueCategories));
         }
-        fetchItems();
-    }, []);
+    }, [dispatch, items]);
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (isError) {
+        return <div>Error loading data.</div>;
+    }
+
 
     return (
-        <div>
-            <Outlet />
-        </div>
+        <Outlet />
+
     );
 };
 
