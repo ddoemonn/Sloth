@@ -21,29 +21,3 @@ export interface IItem{
     count: number;
 }
 
-export interface IItemCount extends IItem {
-    count: number;
-}
-
-export interface ICartItems {
-    cartItems: IItem[]
-}
-
-export interface CartSideBarProps {
-    toggleCart: () => void;
-    isCartOpen: boolean;
-}
-
-export interface ItemPage {
-    itemState: IItem | null;
-    selectedSizes: boolean[];
-    isOpen: boolean;
-    index: number;
-    itemSize: IItemSize;
-    err: String;
-    
-}
-
-export interface ItemPageState {
-    pageItem: ItemPage;
-}

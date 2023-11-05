@@ -3,55 +3,55 @@ import React from 'react'
 import {  useQuery } from 'react-query';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { setIndex, setItemSize, setItemState, setSelectedSize } from '../redux/features/itemDetailSlice';
-import ItemDetails from '../components/Item/ItemDetails';
-import NewItemAddedModal from '../components/Item/NewItemAddedModal';
+import { IItem } from '../types/type';
+import ImgLayout from '../layouts/ImgLayout';
+import ItemInfo from '../components/ItemDetails/ItemInfo';
+import ItemSıze from '../components/ItemDetails/ItemSıze';
 
 
 export default function ItemDetailsP() {
-  const { id } = useParams();
-  const itemUrl = `http://localhost:4000/api/items/${id}`;
+      const { id } = useParams();
+      const itemUrl = `http://localhost:4000/api/items/${id}`;
 
-  const { data: item, isLoading, isError } = useQuery(
-    ['items',id], 
-    () => axios.get(itemUrl),
-    {
-      refetchOnWindowFocus: false,
-    }
-    );
+      const { data: item, isLoading, isError } = useQuery(
+        ['items',id], 
+        () => axios.get(itemUrl),
+        {
+          refetchOnWindowFocus: false,
+        }
+        );
 
-  const dispatch = useDispatch();
+      const dispatch = useDispatch();
 
-  React.useEffect(() => {
-    if(item){
-      dispatch(setItemSize({
-        label: 'A',
-        stock: 0,
-        _id: '0',
-    }))
-      dispatch(setItemState(null)) 
-      console.log(item.data)
-      dispatch(setItemState(item.data))
-      dispatch(setSelectedSize(Array(item.data.size.length).fill(false)))
-      const Index: number = JSON.parse(localStorage.getItem('Index') || '0');
-      dispatch(setIndex(Index + 1))
+      if (isLoading) {
+        return <div>Loading...</div>;
     }
 
-    
+    if (isError) {
+        return <div>Error loading data.</div>;
+    }
+    const imageUrl = `http://localhost:4000/api/items/img/${item?.data.imagePath}`;
+    let itemData: IItem = item?.data;
+      return (
+        <>  
+        {itemData && (
+          <main className='flex  justify-center ml-20 mt-20 w-11/12'>
+                <ImgLayout imageUrl={imageUrl} />
+                <aside className='w-6/12 '>
+                  <ItemInfo itemData={itemData}/>
+                  {itemData.size.length > 1 && (
+                    <ItemSıze itemData={itemData} />
+                  )}      
+                  
+                  <button className='bg-black rounded-lg block text-white p-2 w-64 ml-6'>Add to Cart</button>
+                </aside>
 
-}, [item])
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-}
+          
+          </main>
+        )}
 
-if (isError) {
-    return <div>Error loading data.</div>;
-}
-  return (
-    <section className='flex justify-center  flex-col md:mt-20 md:flex-row'>  
-      <ItemDetails  /> 
-      <NewItemAddedModal/>
-    </section>
-  )
+
+        </>
+      )
 }
