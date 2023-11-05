@@ -1,15 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { IItem } from '../../types/type'
 import ListItemSize from '../../layouts/ListItemSize'
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AddToCart } from '../../redux/features/cartItemSlice';
 import { useCart } from '../../hooks/useCart';
+import { RootState } from '../../redux/store';
 
 export default function ItemSıze({itemData} : {itemData : IItem}) {
     const [selectedItemIndex, setSelectedItemIndex] = React.useState<number | null>(null);
     const dispatch = useDispatch();
     const newItem = useCart(itemData, selectedItemIndex) // custom hook
+    const cartItems = useSelector((state : RootState) => state.CartItems.cartItems)
+
+    React.useEffect(() => console.log(cartItems),[cartItems])
 
     console.log(newItem)
 
@@ -18,7 +22,7 @@ export default function ItemSıze({itemData} : {itemData : IItem}) {
     };
     
     const add_to_cart = () => {
-        
+        dispatch(AddToCart(newItem))
     }
     return (
         <React.Fragment>
