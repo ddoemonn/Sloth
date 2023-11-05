@@ -16,7 +16,8 @@ const AddToCartButton: React.FC = () => {
         size: [pageItemState.itemSize] as IItemSize[],
         
     }
-    if(pageItemState.itemSize.label !== 'A'){
+    
+    if(pageItemState.itemSize.label !== 'A' || pageItemState.selectedSizes.length === 0){
         dispatch(setErr(''))
         dispatch(addCartItem(Item))
         
@@ -46,7 +47,10 @@ const AddToCartButton: React.FC = () => {
 
     }
     if(pageItemState.itemSize.label === 'A'){
+      if(pageItemState.selectedSizes.length > 0){
         dispatch(setErr('You have to choose size!'));
+      }
+        
     }
     
 }

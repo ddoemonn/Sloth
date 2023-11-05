@@ -7,9 +7,9 @@ const NewItemConfirmation: React.FC = ()  => {
     const dispatch = useDispatch();
     return (
         <>
-            <AiFillCheckCircle className='inline'/>
-            <h2 className='w-full inline text-2xl font-geo font-bold ml-5 '>PRODUCT ADDED TO THE CART</h2>
-            <button className='ml-10  text-3xl font-bold hover:text-blue-900' 
+            <AiFillCheckCircle className='inline t'/>
+            <h2 className='w-full inline  font-geo font-bold ml-5 '>PRODUCT ADDED TO THE CART</h2>
+            <button className='ml-10   font-bold hover:text-blue-900' 
                     onClick={() =>  dispatch(toggleCart())}>X</button>
         </>
     )

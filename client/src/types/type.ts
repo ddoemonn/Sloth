@@ -18,6 +18,7 @@ export interface IItem{
     updatedAt: string;
     __v: number;
     _id: string
+    count: number;
 }
 
 export interface IItemCount extends IItem {

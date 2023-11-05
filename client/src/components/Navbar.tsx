@@ -3,7 +3,13 @@ import ICON from './sloth.png'
 import Search from './SearchC'
 import { BiCartAlt } from "react-icons/bi"
 import { Link, Outlet } from 'react-router-dom'
+import CartSideBar from './Cart/CartSideBar'
 export default function Navbar() {
+    const [isCartOpen, setIsCartOpen] = React.useState<boolean>(false);
+
+    const toggleCart = () => {
+        setIsCartOpen(!isCartOpen)
+    }
     return (
         <>
             <nav>
@@ -21,7 +27,8 @@ export default function Navbar() {
                         Drinkware</Link>
                     <Search />
                     <li className='p-2 m-2 mt-3 text-2xl hover:text-blue-700 hover:underline cursor-pointer '>
-                        <BiCartAlt />
+                        <BiCartAlt onClick={toggleCart}/>
+                        <CartSideBar toggleCart={toggleCart} isCartOpen={isCartOpen} />
                     </li>
                 </ul>
             </nav>

@@ -11,10 +11,10 @@ const ItemInfo: React.FC = () => {
   {pageItemState.itemState && (
     <>
         
-        <p className='text-2xl mb-3'>{pageItemState.itemState.name}</p>
-        <p className='font-bold text-3xl mb-3'>{pageItemState.itemState.description}</p>
+        <p className='text-3xl font-bold mb-3'>{pageItemState.itemState.name}</p>
+        <p className='font-semibold text-base mb-3'>{pageItemState.itemState.description}</p>
         <p className='font-semibold mb-3'>{pageItemState.itemState.color}</p>
-        <p className='text-2xl font-semibold mb-3'>{pageItemState.itemState.price}</p>
+        <p className='text-2xl font-semibold mb-3'>{`$${pageItemState.itemState.price.toFixed(2)} USD`}</p>
     </>
   ) }
 

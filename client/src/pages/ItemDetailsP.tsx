@@ -3,7 +3,7 @@ import React from 'react'
 import {  useQuery } from 'react-query';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { setIndex, setItemState, setSelectedSize } from '../redux/features/itemDetailSlice';
+import { setIndex, setItemSize, setItemState, setSelectedSize } from '../redux/features/itemDetailSlice';
 import ItemDetails from '../components/Item/ItemDetails';
 import NewItemAddedModal from '../components/Item/NewItemAddedModal';
 
@@ -23,8 +23,13 @@ export default function ItemDetailsP() {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    dispatch(setItemState(null)) 
     if(item){
+      dispatch(setItemSize({
+        label: 'A',
+        stock: 0,
+        _id: '0',
+    }))
+      dispatch(setItemState(null)) 
       console.log(item.data)
       dispatch(setItemState(item.data))
       dispatch(setSelectedSize(Array(item.data.size.length).fill(false)))

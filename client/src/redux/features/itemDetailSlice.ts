@@ -10,7 +10,7 @@ const initialState: ItemPageState = {
         index: 0,
         itemSize: {
             label: 'A',
-            stock: 0,
+            stock: 5,
             _id: '0',
         },
         err: ''

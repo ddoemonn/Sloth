@@ -18,7 +18,7 @@ const ItemDetails: React.FC = () => {
         <>
             {imageUrl && <img   src={imageUrl} 
                                 alt="Item" 
-                                className='w-[250px] h-[245px] object-scale-down hover:scale-125 transition duration-500'
+                                className='w-[550px] h-[455px] object-scale-down hover:scale-125 transition duration-500'
                         />}
             <section className=' w-1/4'>
                 {pageItemState.itemState && <ItemInfo />}

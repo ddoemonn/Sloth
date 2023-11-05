@@ -11,8 +11,8 @@ const NewItemAddedModal: React.FC = () => {
     return (
         <>
         {pageItemState.isOpen && (
-            <section className='absolute  w-full  inset-0 top-20  text-3xl bg-slate-800 bg-opacity-50 flex justify-end  z-50 '>
-            <section className='bg-white p-2 mr-20 mt-3 w-[25rem] h-[17rem] rounded-xl'>
+            <section className='absolute  w-full  inset-0 top-20  text-lg bg-slate-800 bg-opacity-50 flex justify-end  z-50 '>
+            <section className='bg-white p-2 mr-20 mt-3 w-[25rem] h-[15rem] rounded-xl'>
                 <NewItemConfirmation />
                 <NewItemDetails />
                 <CartButtons />

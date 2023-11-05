@@ -11,17 +11,17 @@ const NewItemDetails: React.FC = ()  => {
         imageUrl = `http://localhost:4000/api/items/img/${pageItemState.itemState.imagePath}`;
     }
     return (
-        <article className='flex mb-5'>
+        <article className='flex mb-5 text-base'>
               {imageUrl && <img   src={imageUrl} 
                                 alt="Item" 
-                                className='w-[250px] h-[245px] object-scale-down hover:scale-125 transition duration-500'
+                                className='w-[150px] h-[145px] object-scale-down '
                         />}
             <aside className='mt-7'>
-                <p className='text-2xl font-medium  leading-none'>{pageItemState.itemState?.name}</p>
-                <p className='text-2xl font-medium mb-1 leading-none'>
+                <p className=' font-medium  leading-none'>{pageItemState.itemState?.name}</p>
+                <p className='- font-medium mb-1 leading-none'>
                     Size {pageItemState.itemSize?.label} {pageItemState.itemState?.category}
                 </p>
-                <p className='text-2xl font-bold  leading-none'>
+                <p className='- font-bold  leading-none'>
                     {pageItemState.itemState?.price && pageItemState.itemState.price}
                 </p>
             </aside>

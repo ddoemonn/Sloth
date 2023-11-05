@@ -30,7 +30,7 @@ const SizeButtons: React.FC = () => {
                                 <button
                                 key={item._id}
                                 onClick={() => handleClick(item, index)}
-                                className='mr-5 text-2xl cursor-pointer font-semibold bg-black text-white p-2 rounded-md border-2 border-black'
+                                className='mr-5  cursor-pointer font-semibold bg-black text-white p-2 rounded-md border-2 border-black'
                                 >
                                 {item.label}
                                 </button>
@@ -38,7 +38,7 @@ const SizeButtons: React.FC = () => {
                     <button
                     key={item._id}
                     onClick={() => handleClick(item, index)}
-                    className='mr-5 text-2xl cursor-pointer font-semibold  p-2 rounded-md border-2 border-black'
+                    className='mr-5  cursor-pointer font-semibold  p-2 rounded-md border-2 border-black'
                     >
                     {item.label}
                     </button>
@@ -52,7 +52,4 @@ const SizeButtons: React.FC = () => {
 };
 
 export default SizeButtons;
-function setSelectedSizes(updatedSizes: boolean[]): any {
-    throw new Error('Function not implemented.');
-}
 
