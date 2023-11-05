@@ -20,7 +20,9 @@ export const cartItemsSlice = createSlice({
         },
         AddToCart: (state, action: PayloadAction<ICartItem>) => {
             const newItem = action.payload;
-            const existingItemIndex = state.cartItems.findIndex(item => item._id === newItem._id);
+            const existingItemIndex = state.cartItems.findIndex(
+                item => item._id === newItem._id && item.size?._id === newItem.size?._id
+            );
 
             if (existingItemIndex !== -1) {
                 // If item already exists in cart, increment count

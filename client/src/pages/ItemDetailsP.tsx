@@ -41,14 +41,10 @@ export default function ItemDetailsP() {
                 <ImgLayout imageUrl={imageUrl} />
                 <aside className='w-6/12 '>
                   <ItemInfo itemData={itemData}/>
-                  {itemData.size.length > 1 && (
-                    <>
-                      <h2 className='font-semibold ml-5 text-lg'>SIZE</h2>
-                      <ItemSıze itemData={itemData} />
-                    </>
-                    
-                  )}      
+  
                   
+                  <ItemSıze itemData={itemData} />
+      
                 </aside>
 
 
