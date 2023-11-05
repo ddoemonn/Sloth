@@ -15,7 +15,7 @@ const initialState: items = {
 }
 
 
-export const cartItemsSlice = createSlice({
+export const itemSlice = createSlice({
     name: 'Items',
     initialState,
     reducers: {
@@ -33,6 +33,6 @@ export const cartItemsSlice = createSlice({
     }
 })
 
-export const { SetItems, SetCategories, filterItemsByCategory } = cartItemsSlice.actions;
+export const { SetItems, SetCategories, filterItemsByCategory } = itemSlice.actions;
 
-export default cartItemsSlice.reducer;
+export default itemSlice.reducer;

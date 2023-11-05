@@ -27,6 +27,8 @@ export default function ItemDetailsP() {
         return <div>Loading...</div>;
     }
 
+    console.log(item)
+
     if (isError) {
         return <div>Error loading data.</div>;
     }
@@ -35,15 +37,18 @@ export default function ItemDetailsP() {
       return (
         <>  
         {itemData && (
-          <main className='flex  justify-center ml-20 mt-20 w-11/12'>
+          <main className='flex  justify-center ml-20 mt-14 w-11/12'>
                 <ImgLayout imageUrl={imageUrl} />
                 <aside className='w-6/12 '>
                   <ItemInfo itemData={itemData}/>
                   {itemData.size.length > 1 && (
-                    <ItemSıze itemData={itemData} />
+                    <>
+                      <h2 className='font-semibold ml-5 text-lg'>SIZE</h2>
+                      <ItemSıze itemData={itemData} />
+                    </>
+                    
                   )}      
                   
-                  <button className='bg-black rounded-lg block text-white p-2 w-64 ml-6'>Add to Cart</button>
                 </aside>
 
 
