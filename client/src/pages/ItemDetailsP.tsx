@@ -1,17 +1,41 @@
 import axios from 'axios';
 import React from 'react'
 import {  useQuery } from 'react-query';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { IItem } from '../types/type';
 import ImgLayout from '../layouts/ImgLayout';
 import ItemInfo from '../components/ItemDetails/ItemInfo';
 import ItemSıze from '../components/ItemDetails/ItemSıze';
+import { RootState } from '../redux/store';
+import NewItemModal from '../components/ItemDetails/NewItemModal';
 
 
 export default function ItemDetailsP() {
+      const [isCartOpen, setIsCartOpen] = React.useState<boolean>(false)
       const { id } = useParams();
       const itemUrl = `http://localhost:4000/api/items/${id}`;
+      const cartItems = useSelector((state: RootState) => state.CartItems.cartItems)
+
+      const toggleCart = () => {
+        setIsCartOpen(!isCartOpen)
+    }
+
+      React.useEffect(() => {
+        if(cartItems.length > 0){
+          setIsCartOpen(true)
+        }
+
+        const timeoutId = setTimeout(() => {
+          setIsCartOpen(false); 
+        }, 26000); 
+  
+        return () => {
+          clearTimeout(timeoutId);
+        };
+
+        
+      }, [cartItems])
 
       const { data: item, isLoading, isError } = useQuery(
         ['items',id], 
@@ -20,8 +44,6 @@ export default function ItemDetailsP() {
           refetchOnWindowFocus: false,
         }
         );
-
-      const dispatch = useDispatch();
 
       if (isLoading) {
         return <div>Loading...</div>;
@@ -46,7 +68,10 @@ export default function ItemDetailsP() {
                   <ItemSıze itemData={itemData} />
       
                 </aside>
-
+                {isCartOpen && (
+                    <NewItemModal toggleCart={toggleCart}/>
+                )}
+                
 
           
           </main>
