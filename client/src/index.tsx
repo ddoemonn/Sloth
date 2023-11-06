@@ -16,12 +16,11 @@ import Shipping from './pages/checkout/Shipping';
 const queryClient = new QueryClient();
 
 const routes:  RouteObject[] = createRoutesFromElements(
-    <Route path='/' element={<App />}>
-        <Route path='/' element={<Navbar />}>
+    <Route path='/' element={<Navbar />}>
+            <Route path='/' element={<App />} />
             <Route path='/:id' element={<ItemDetails />} />
             <Route path='/search' element={<SearchP />} />
             <Route path='/search/:category' element={<SearchedItemsP />} />
-        </Route>
         <Route path='/checkout' element={<Checkout />} >
             <Route  index element={<Information />} />
             <Route  path='/checkout/shipping' element={<Shipping />} />
@@ -46,7 +45,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Providers>
         
             <RouterProvider router={router}  />
-            <App />
+            
         
         </Providers>
         </QueryClientProvider>

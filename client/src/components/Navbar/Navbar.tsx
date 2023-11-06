@@ -4,7 +4,16 @@ import Search from './SearchC'
 import { BiCartAlt } from "react-icons/bi"
 import { Link, Outlet } from 'react-router-dom'
 import CartSideBar from '../CartSideBar/CartSideBar'
+import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import { useQuery } from 'react-query'
+import { SetCategories, SetItems } from '../../redux/features/itemSlice'
+import { IItem } from '../../types/type'
+
+
 export default function Navbar() {
+
+    
     const [isCartOpen, setIsCartOpen] = React.useState<boolean>(false);
 
     const toggleCart = () => {
