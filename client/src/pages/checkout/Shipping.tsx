@@ -1,15 +1,24 @@
 
 import { loadStripe } from '@stripe/stripe-js';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { ICartItem } from '../../types/type';
 
 const stripeKey = process.env.STRIPE_PUBLIC_KEY ?? 'bla bla';
 const stripePromise = loadStripe(stripeKey);
 
 
 export default function Shipping() {
+    const CartItems = useSelector((state : RootState) => state.CartItems.cartItems)
     const handleCheckout = async () => {
         const stripe = await stripePromise;
 
         try {
+            const items = CartItems.map((cartItem: ICartItem) => ({
+                name: cartItem.name,
+                amount: cartItem.price , // Amount in cents
+                quantity: cartItem.count,
+            }));
             const response = await fetch('http://localhost:4000/api/create-checkout-session', {
                 method: 'POST',
                 headers: {
@@ -18,18 +27,7 @@ export default function Shipping() {
                 body: JSON.stringify({
                 amount: 1, // Amount in cents
                 currency: 'usd',
-                items: [
-                    {
-                    name: 'Product Name',
-                    amount: 1, // Amount in cents
-                    quantity: 1,
-                    },
-                    {
-                        name: 'Product Toto',
-                    amount: 2, // Amount in cents
-                    quantity: 1,
-                    }
-                ],
+                items: items,
                 }),
             });
 
