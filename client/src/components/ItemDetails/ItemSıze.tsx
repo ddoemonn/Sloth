@@ -46,7 +46,7 @@ export default function ItemSıze({itemData, toggleCart} : ItemSizeProps) {
     return (
         <React.Fragment>
             
-        <ul className='inline-flex m-5 mt-0' >
+        <ul className='inline-flex m-5 mt-0 overflow-hidden' >
             {itemData.size.map((item,index) => {
                 return <ListItemSize item={item} isSelected={selectedItemIndex === index} key={index} 
                                         onClick={() => handleItemClick(index)}/>

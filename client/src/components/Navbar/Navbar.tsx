@@ -3,7 +3,7 @@ import ICON from './sloth.png'
 import Search from './SearchC'
 import { BiCartAlt } from "react-icons/bi"
 import { Link, Outlet } from 'react-router-dom'
-import CartSideBar from './CartSideBar'
+import CartSideBar from '../CartSideBar/CartSideBar'
 export default function Navbar() {
     const [isCartOpen, setIsCartOpen] = React.useState<boolean>(false);
 

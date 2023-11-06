@@ -56,9 +56,9 @@ export default function ItemDetailsP() {
       return (
         <>  
         {itemData && (
-          <main className='flex  justify-center ml-20 mt-14 w-11/12 '>
+          <main className='flex  justify-center ml-20 mt-14 w-11/12 overflow-hidden '>
                 <ImgLayout imageUrl={imageUrl} />
-                <aside className='w-6/12 '>
+                <aside className='w-6/12 overflow-x-hidden'>
                   <ItemInfo itemData={itemData}/>
   
                   

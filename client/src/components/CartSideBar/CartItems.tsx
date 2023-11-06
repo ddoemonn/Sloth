@@ -17,25 +17,25 @@ export default function CartItems({toggleCart} : {toggleCart: () => void}) {
     }, [CartItems])
     return (
         <>
-        <ul className='bg-white w-[450px] h-full p-4 overflow-y-scroll'>
+        <ul className='bg-white w-[350px] h-full p-1 overflow-y-scroll z-30'>
                     {CartItems.map((item, index) =>{
                         return <CartItem item={item} key={`${item._id}${index}`}/>
                     })}
                     
         </ul>
         {price > 0 && (
-                        <section className='bg-white w-[450px] '>
-                        <aside className='flex justify-between'>
-                            <h2>Total</h2>
-                            <h3>{price}</h3>
-                        </aside>
-                        <button className='bg-black w-full rounded-xl border-2 border-black m-1 text-white text-2xl'
-                                >Check out</button>
-                        <button className='b w-full rounded-xl border-2 m-1 border-black text-2xl'
-                                onClick={() => {
-                                    //navigate('/cart');
-                                    toggleCart();
-                                }}>Go to cart</button>
+                        <section className='bg-white w-[350px] text-base flex flex-col justify-center items-center p-3 h-[30%]'>
+                            <article className='flex justify-between w-[300px] '>
+                                <h2 className='p-2'>Total</h2>
+                                <h3 className='font-semibold text-lg p-2'>{`$${price.toFixed(2)} USD`}</h3>
+                            </article>
+                            <button className='bg-black w-[300px] rounded-xl p-2 border-2 border-black m-1  text-white '
+                                    >Check out</button>
+                            <button className='w-[300px] rounded-xl p-2 border-2 m-1  border-black '
+                                    onClick={() => {
+                                        //navigate('/cart');
+                                        toggleCart();
+                                    }}>Go to cart</button>
                         </section>
                     )}
         </>
