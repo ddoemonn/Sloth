@@ -8,6 +8,7 @@ export default function ItemInfo({itemData} : {itemData : IItem}) {
         <p className='text-lg mb-3'>{itemData.description}</p>
         <h2  className='font-semibold text-lg mb-2'>COLOR</h2>
         <p className='text-lg border-[1px] border-slate-300 inline px-2 rounded-lg '>{itemData.color}</p>
+        <p  className='font-semibold text-2xl mt-3'>{`$${itemData.price.toFixed(2)} USD`}</p>
         
     </article>
   )

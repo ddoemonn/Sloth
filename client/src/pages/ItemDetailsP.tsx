@@ -22,13 +22,10 @@ export default function ItemDetailsP() {
     }
 
       React.useEffect(() => {
-        if(cartItems.length > 0){
-          setIsCartOpen(true)
-        }
 
         const timeoutId = setTimeout(() => {
           setIsCartOpen(false); 
-        }, 26000); 
+        }, 6000); 
   
         return () => {
           clearTimeout(timeoutId);
@@ -59,13 +56,13 @@ export default function ItemDetailsP() {
       return (
         <>  
         {itemData && (
-          <main className='flex  justify-center ml-20 mt-14 w-11/12'>
+          <main className='flex  justify-center ml-20 mt-14 w-11/12 '>
                 <ImgLayout imageUrl={imageUrl} />
                 <aside className='w-6/12 '>
                   <ItemInfo itemData={itemData}/>
   
                   
-                  <ItemSıze itemData={itemData} />
+                  <ItemSıze itemData={itemData} toggleCart={toggleCart} />
       
                 </aside>
                 {isCartOpen && (

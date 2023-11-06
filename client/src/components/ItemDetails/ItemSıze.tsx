@@ -7,7 +7,12 @@ import { AddToCart } from '../../redux/features/cartItemSlice';
 import { useCart } from '../../hooks/useCart';
 import { RootState } from '../../redux/store';
 
-export default function ItemSıze({itemData} : {itemData : IItem}) {
+interface ItemSizeProps {
+    itemData: IItem;
+    toggleCart: () => void;
+}
+
+export default function ItemSıze({itemData, toggleCart} : ItemSizeProps) {
     const [selectedItemIndex, setSelectedItemIndex] = React.useState<number | null>(null);
     const dispatch = useDispatch();
     const {cartItem}  = useCart(itemData, selectedItemIndex);    // custom hook
@@ -33,6 +38,7 @@ export default function ItemSıze({itemData} : {itemData : IItem}) {
     const add_to_cart = () => {
         if(cartItem.name ) {
             dispatch(AddToCart(cartItem))
+            toggleCart();
         }else{
             setError('Please select a size')
         }

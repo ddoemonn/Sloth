@@ -43,7 +43,7 @@ const NewItemModal: React.FC<NewItemProps> = ({toggleCart}) => {
                     <p className='text-lg font-medium mb-1 leading-none'>
                         Size {newItem.size?.label} {newItem.category}
                     </p>
-                    <p className='text-2xl font-bold leading-none'>{newItem.price}</p>
+                    <p  className='font-semibold text-2xl mt-3'>{`$${newItem.price.toFixed(2)} USD`}</p>
                     </aside>
                 </article>
                 
