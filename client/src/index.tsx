@@ -4,12 +4,14 @@ import App from './App'
 import './style.css'
 import { Route, RouteObject, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
-import Checkout from './components/Checkout';
+import Checkout from './pages/checkout/Checkout';
 import SearchP from './pages/SearchP';
 import { Providers } from './redux/provider';
 import SearchedItemsP from './pages/SearchedItemsP';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import ItemDetails from './pages/ItemDetailsP';
+import Information from './pages/checkout/Information';
+import Shipping from './pages/checkout/Shipping';
 
 const queryClient = new QueryClient();
 
@@ -21,6 +23,8 @@ const routes:  RouteObject[] = createRoutesFromElements(
             <Route path='/search/:category' element={<SearchedItemsP />} />
         </Route>
         <Route path='/checkout' element={<Checkout />} >
+            <Route  index element={<Information />} />
+            <Route  path='/checkout/shipping' element={<Shipping />} />
 
         </Route>
 

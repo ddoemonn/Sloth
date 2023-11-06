@@ -17,6 +17,7 @@ export default function ItemSıze({itemData, toggleCart} : ItemSizeProps) {
     const dispatch = useDispatch();
     const {cartItem}  = useCart(itemData, selectedItemIndex);    // custom hook
     const cartItems = useSelector((state : RootState) => state.CartItems.cartItems)
+    
     console.log(itemData.size.length)
     React.useEffect(() => {
         console.log(cartItem)
@@ -25,6 +26,8 @@ export default function ItemSıze({itemData, toggleCart} : ItemSizeProps) {
     React.useEffect(() => {
         console.log(cartItems)
     }, [cartItems])
+
+
 
     const [error, setError] = React.useState<string>('');
 

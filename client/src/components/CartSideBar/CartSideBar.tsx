@@ -13,8 +13,8 @@ export default function CartSideBar({ toggleCart, isCartOpen} : CartSideBarProps
     return (
         <>
             {isCartOpen && (
-            <section className='fixed inset-0 bg-gray-800 bg-opacity-60 flex flex-col items-end   '>
-                <section className='w-[350px] bg-white flex justify-between h-[%10] z-40'>
+            <section className='fixed inset-0 bg-gray-800 bg-opacity-60 flex flex-col items-end z-[100]  '>
+                <section className='w-[350px] bg-white flex justify-between h-[%10] '>
                     <h2 className='text-3xl p-3 inline '>Cart</h2>
                     <h2 onClick={toggleCart} className=' text-right p-3 text-xl  hover:underline'>X</h2>
                 

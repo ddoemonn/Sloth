@@ -2,10 +2,12 @@ import React from 'react'
 import CartItem from './CartItem';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
+import { useNavigate } from 'react-router-dom';
 
 export default function CartItems({toggleCart} : {toggleCart: () => void}) {
     const CartItems = useSelector((state: RootState) => state.CartItems.cartItems);
     const [price, setPrice]  = React.useState<number>(0);
+    const navigate = useNavigate();
 
     React.useEffect(() => {
         let totalPrice = 0;
@@ -30,7 +32,9 @@ export default function CartItems({toggleCart} : {toggleCart: () => void}) {
                                 <h3 className='font-semibold text-lg p-2'>{`$${price.toFixed(2)} USD`}</h3>
                             </article>
                             <button className='bg-black w-[300px] rounded-xl p-2 border-2 border-black m-1  text-white '
-                                    >Check out</button>
+                                    onClick={() => {
+                                        navigate('/checkout')
+                                    }}>Check out</button>
                             <button className='w-[300px] rounded-xl p-2 border-2 m-1  border-black '
                                     onClick={() => {
                                         //navigate('/cart');

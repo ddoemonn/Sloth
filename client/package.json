@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
+    "@stripe/stripe-js": "^2.1.11",
     "axios": "^1.6.0",
     "dotenv-webpack": "^8.0.1",
     "formik": "^2.4.5",
