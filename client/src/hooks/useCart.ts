@@ -17,7 +17,7 @@ export const useCart = (item: IItem, selectedIndex: number | null): CartItemWith
                     color: item.color,
                     price: item.price,
                     category: item.category,
-                    size: { label: 'One Size', stock: 5, _id: '1' },
+                    size: { label: 'One', stock: 5, _id: '1' },
                     imagePath: item.imagePath,
                     _id: item._id,
                     count: 0,

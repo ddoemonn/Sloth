@@ -11,13 +11,13 @@ export default function CartItemsList({CartItems} : {CartItems: ICartItem[]}) {
     useEffect(() => {
         let totalPrice = 0;
         CartItems.forEach(item => {
-            totalPrice += item.price;
+            totalPrice += item.price * item.count;
         });
         setPrice(totalPrice);
         console.log(CartItems)
     }, [CartItems])
     return (
-        <ul className='bg-white w-[450px] h-full p-4 overflow-y-scroll '>
+        <ul className='bg-white w-[450px] h-full p-4 overflow-y-scroll font-semibold '>
                     {CartItems.map((item, index) =>{
                         return <CartItem item={item} key={`${item._id}${index}`}/>
                     })}
@@ -25,7 +25,7 @@ export default function CartItemsList({CartItems} : {CartItems: ICartItem[]}) {
                 
                         <aside className='flex justify-between text-xl font-semibold my-5'>
                             <h2>Total</h2>
-                            <h3>{formatPrice(price)}</h3>
+                            <h3>{`$${price.toFixed(2)} USD`}</h3>
                         </aside>
                         )
             

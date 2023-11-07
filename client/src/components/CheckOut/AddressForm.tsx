@@ -2,6 +2,8 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setAddressValues } from '../../redux/features/addressSlice';
 
 const AddressFormSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Email is required'),
@@ -21,6 +23,7 @@ interface FormValues {
 
 const AddressForm: React.FC = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const formik = useFormik<FormValues>({
         initialValues: {
@@ -34,6 +37,8 @@ const AddressForm: React.FC = () => {
         onSubmit: values => {
             console.log(values);
             navigate('/checkout/shipping');
+            dispatch(setAddressValues(values))
+            localStorage.setItem('addressFormValues', JSON.stringify(values));
         },
     });
 

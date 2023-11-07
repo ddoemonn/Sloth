@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { IItem } from '../../types/type'
+import { ICartItem, IItem } from '../../types/type'
 import ListItemSize from '../../layouts/ListItemSize'
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -39,13 +39,29 @@ export default function ItemSıze({itemData, toggleCart} : ItemSizeProps) {
     };
     
     const add_to_cart = () => {
-        if(cartItem.name ) {
-            dispatch(AddToCart(cartItem))
+        if (cartItem.name && cartItem.size) {
+            const existingCartItemsJSON = localStorage.getItem('cartItems');
+            const existingCartItems = existingCartItemsJSON ? JSON.parse(existingCartItemsJSON) : [];
+    
+            const existingItemIndex = existingCartItems.findIndex((item: ICartItem) => {
+                return item._id === cartItem._id && item.size?._id === cartItem.size?._id;
+            });
+            
+    
+            if (existingItemIndex !== -1) {
+                existingCartItems[existingItemIndex].count += 1;
+            } else {
+                existingCartItems.push({ ...cartItem, count: 1 });
+            }
+    
+            localStorage.setItem('cartItems', JSON.stringify(existingCartItems));
+            dispatch(AddToCart(cartItem));
             toggleCart();
-        }else{
-            setError('Please select a size')
+        } else {
+            setError('Please select a size');
         }
-    }
+    };
+    
     return (
         <React.Fragment>
             
@@ -56,8 +72,11 @@ export default function ItemSıze({itemData, toggleCart} : ItemSizeProps) {
             })}
         </ul>
         {itemData && selectedItemIndex !== null && itemData.size[selectedItemIndex].stock !== 0 && (
-            <p className=' font-semibold text-lg inline'>{itemData.size[selectedItemIndex].stock} items left</p>
-        )}
+    itemData.size[selectedItemIndex].stock < 6 && (
+        <p className='font-semibold text-lg inline'>{itemData.size[selectedItemIndex].stock} items left</p>
+    )
+)}
+
 
         <button onClick={add_to_cart}
             className='bg-black rounded-lg block text-white p-2 w-64 hover:scale-105 ml-7 transition delay-200'>Add to Cart</button>

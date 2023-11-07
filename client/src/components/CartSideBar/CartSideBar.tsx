@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import CartItemsList from "./CartItems";
 import { RootState } from "../../redux/store";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { SetCartItems } from "../../redux/features/cartItemSlice";
 
 interface CartSideBarProps {
     toggleCart: () => void;
@@ -10,6 +12,16 @@ interface CartSideBarProps {
 
 export default function CartSideBar({ toggleCart, isCartOpen} : CartSideBarProps) {
     const CartItems = useSelector((state: RootState) => state.CartItems.cartItems);
+    const dispatch = useDispatch();
+
+    React.useEffect(() => {
+
+        const savedCartItems = localStorage.getItem('cartItems');
+        if (savedCartItems) {
+            const parsedCartItems = JSON.parse(savedCartItems);
+            dispatch(SetCartItems(parsedCartItems));
+        }
+    }, []); 
     return (
         <>
             {isCartOpen && (
@@ -22,9 +34,9 @@ export default function CartSideBar({ toggleCart, isCartOpen} : CartSideBarProps
                 {CartItems.length > 0 ? (
                     <CartItemsList toggleCart={toggleCart} /> 
                 ) : (
-                    <section className='w-[350px] h-full bg-white pt-10'>
-                        <h4 className='text-2xl text-center font-semibold w-full'>Your cart is currently empty</h4>
-                        <button className='bg-black rounded-lg w-11/12  text-white text-2xl'
+                    <section className='w-[350px] h-full bg-white pt-10 p-5 flex flex-col items-center'>
+                        <h4 className='text-lg text-center font-semibold mb-3 '>Your cart is currently empty</h4>
+                        <button className='bg-black rounded-lg w-11/12 text-white text-base'
                                 onClick={toggleCart}><Link to='/' > CONTINUE SHOPPING</Link></button>
                     </section>
                 )}

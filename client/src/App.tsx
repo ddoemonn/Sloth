@@ -36,40 +36,60 @@ const App: React.FC = () => {
 
 
     return (
-        <main className='overflow-hidden h-[80vh] flex p-3'>
+      
+       
+        <main className='  flex  flex-col '>
 
-            <section className='w-3/4 ml-10'>
-                <header className='h-[100px]'>
-                <img src={ICON} alt="sloth" width={90} className='object-contain inline mb-6'/>
-                    <h1 className='text-6xl font-bold ml-5 mt-10 font-pen   mb-5 inline'>Sloth</h1>
-                    
-                </header>
-                   
-                    
-                    
-                
-                <p className='text-green-800 text-2xl ml-20 mr-32 font-semibold font-montserrat '>Discover eco-friendly essentials from sustainable clothing to biodegradable drinkware, 
-                    earth-conscious footwear, and green stickers—all on our one-stop eco-commerce site.</p>
-                    
-            
-                <aside className='bg-black   text-right ml-96 mt-7 shadow-lg hover:shadow-green-800 cursor-pointer p-3 inline-flex rounded-2xl  text-3xl'>
-                    <BiCartAlt className='bg-white rounded-2xl p-1 text-4xl mt-[2px] ' />
-                    <h2 className='  text-white ml-2 font-light '>Buy Now!</h2>
-                </aside>
-            </section>
+       
+
+        
+    
             
 
-            <section className=' flex flex-col justify-center w-1/4'>
+            <section className=' flex w-full justify-center '>
             {pageItems.map((item: IItem, index: number) => {
                 const imageUrl = `http://localhost:4000/api/items/img/${item.imagePath}`;
                 
 
-                if( index < 3){
+                if( index < 6){
                 return (
                     <img
                     key={index}
                     src={imageUrl}
-                    className='rounded-full w-[160px] h-[190px] object-scale-down mr-48 '
+                    className='rounded-full  h-[180px] object-contain mr-10 overflow-hidden '
+                    alt={item.name}
+                    />
+                );
+                }
+            })}
+            </section>
+            <article className='text-5xl  text-center my-4'>
+            <h1 className='text-6xl font-bold font-pen text-slate-700 my-2'>SLOTH</h1>
+            <h2>We stay on top</h2>
+            <h2>so you can be on top</h2>
+            </article>
+
+            <aside className='flex flex-col w-full justify-center text-center text-3xl font-semibold text-blue-900 font-pen'>
+                <p className='b-5'>Refined | Original | Versatile</p>
+                
+            </aside>
+
+            <button className='cursor-pointer bg-blue-600 shadow-xl shadow-blue-600 hover:shadow-blue-900 hover:border-blue-900 text-white rounded-2xl p-2 inline-flex mx-auto font-montserrat border-2 border-blue-600 my-6 mt-4'>
+                Discover Now!
+            </button>
+
+
+            <section className=' flex w-full justify-center '>
+            {pageItems.map((item: IItem, index: number) => {
+                const imageUrl = `http://localhost:4000/api/items/img/${item.imagePath}`;
+                
+
+                if( index > 7){
+                return (
+                    <img
+                    key={index}
+                    src={imageUrl}
+                    className='rounded-full  h-[180px] object-contain mr-10 overflow-hidden '
                     alt={item.name}
                     />
                 );
@@ -82,6 +102,7 @@ const App: React.FC = () => {
         
     
         </main>
+
         
     );
 };

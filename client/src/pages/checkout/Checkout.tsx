@@ -6,6 +6,7 @@ import CartItemsList from '../../components/CheckOut/CartItemsList';
 import { getCartItemsFromLocalStorage } from '../../functions';
 
 export default function Checkout() {
+    const [now, setNow] = React.useState<string>('')
     const CartItems = useSelector((state: RootState) => state.CartItems.cartItems);
     const dispatch = useDispatch();
     useEffect(() => {
@@ -17,15 +18,8 @@ export default function Checkout() {
     <section className='flex justify-around'>
         <section className='flex flex-col flex-1 mt-20 border-r-2 border-slate-200'>
             <Link to="/" className='font-extrabold font-geo text-5xl hover:underline w-full text-center'>
-                APRICOT</Link>  
-            <nav className='m-7 mb-4 text-lg font-semibold w-full '>
-                <ul className='flex justify-center mr-12'>
-                    <Link to='/checkout' className='mx-2 hover:underline cursor-pointer'>{` Information`}</Link>{'>'}
-                    <Link to='/checkout/shipping' className='mx-2 hover:underline cursor-pointer'> {` Shipping`}</Link>{'>'}
-                    <li className='mx-2 hover:underline cursor-pointer'> {` Payment`}</li>
-                </ul>
-                
-            </nav>
+                SLOTH</Link>  
+            
             <Outlet />
             
 

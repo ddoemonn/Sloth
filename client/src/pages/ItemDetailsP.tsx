@@ -25,7 +25,7 @@ export default function ItemDetailsP() {
 
         const timeoutId = setTimeout(() => {
           setIsCartOpen(false); 
-        }, 6000); 
+        }, 36000); 
   
         return () => {
           clearTimeout(timeoutId);
@@ -56,9 +56,9 @@ export default function ItemDetailsP() {
       return (
         <>  
         {itemData && (
-          <main className='flex  justify-center ml-20 mt-14 w-11/12 overflow-hidden '>
+          <main className='flex  justify-center flex-wrap mx-auto mt-14 w-11/12 overflow-hidden '>
                 <ImgLayout imageUrl={imageUrl} />
-                <aside className='w-6/12 overflow-x-hidden'>
+                <aside className=' mb-10 md:mb-0 w-[28rem]'>
                   <ItemInfo itemData={itemData}/>
   
                   

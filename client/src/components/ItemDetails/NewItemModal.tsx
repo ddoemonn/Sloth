@@ -28,22 +28,22 @@ const NewItemModal: React.FC<NewItemProps> = ({toggleCart}) => {
 
 
     return (
-            <section className='absolute w-full inset-0 top-20 text-3xl bg-slate-800 bg-opacity-50 flex  justify-end z-50'>
-            <section className='bg-white p-2 mr-20 mt-3 w-[25rem] h-[17rem] rounded-xl'>
+            <section className='absolute w-full h-[100vh] inset-0 top-20 text-3xl bg-slate-800 bg-opacity-50 flex  justify-end z-50'>
+            <section className='bg-white p-2 mr-20 mt-3 w-[25rem] h-[17.5rem] rounded-xl'>
                 <AiFillCheckCircle className='inline' />
                 <h2 className='w-full inline text-lg font-semibold ml-5'>PRODUCT ADDED TO THE CART</h2>
                 <button className='ml-10 text-2xl font-semibold hover:text-blue-900'
                         onClick={toggleCart}>
                     <AiOutlineClose /></button>
                 {newItem && (
-                <article className='flex mb-1'>
-                    <img src={imageUrl}className='w-[120px] h-[180px] object-cover'alt={'item'}/>
-                    <aside className='mt-7'>
-                    <p className='text-lg font-medium leading-none'>{newItem.name}</p>
-                    <p className='text-lg font-medium mb-1 leading-none'>
-                        Size {newItem.size?.label} {newItem.category}
-                    </p>
-                    <p  className='font-semibold text-2xl mt-3'>{`$${newItem.price.toFixed(2)} USD`}</p>
+                <article className='flex mb-1 '>
+                    <img src={imageUrl} className='w-[105px] h-[160px] object-contain my-5 mb-2 rounded-2xl ml-3'alt={'item'}/>
+                    <aside className='mt-10 ml-5'>
+                        <p className='text-lg font-medium leading-none mb-1'>{newItem.name}</p>
+                        <p className='text-lg font-medium mb-1 leading-none'>
+                            Size {newItem.size?.label} {newItem.category}
+                        </p>
+                        <p  className='font-semibold text-2xl mt-3'>{`$${newItem.price.toFixed(2)} USD`}</p>
                     </aside>
                 </article>
                 

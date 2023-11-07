@@ -12,7 +12,7 @@ export default function CartItems({toggleCart} : {toggleCart: () => void}) {
     React.useEffect(() => {
         let totalPrice = 0;
         CartItems.forEach(item => {
-            totalPrice += item.price;
+            totalPrice += item.price * item.count;
         });
         setPrice(totalPrice);
         console.log(CartItems)

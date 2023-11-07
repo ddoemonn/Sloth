@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import ItemsReducer from './features/itemSlice'
 import CartItemsReducer from './features/cartItemSlice'
 import VisitReducer from './features/visitSlice'
+import AddressSlice from './features/addressSlice'
 
 
 export const store = configureStore({
@@ -9,6 +10,7 @@ export const store = configureStore({
         Items: ItemsReducer,
         CartItems: CartItemsReducer,
         visit: VisitReducer,
+        Address: AddressSlice,
     }
 })
 
