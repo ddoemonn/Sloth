@@ -18,10 +18,10 @@ Navigate the world of online shopping with unmatched ease and comfort at 🦥 Sl
 - **Formik**: Smooth form interactions.
 - **Tailwind CSS**: Allowing for rapid UI development with a utility-first approach.
 - **React Router**: Providing seamless page transitions and navigation.
+- **Webpack and Babel:** Bundling and transpiling JavaScript for optimized performance.
 
 ### Backend
 - **Express & Node.js**: Powering the server side with efficiency.
-- **TypeScript**: Ensuring code reliability.
 - **MongoDB**: Flexible data storage.
 
 ### Image Hosting
