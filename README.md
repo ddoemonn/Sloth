@@ -23,9 +23,10 @@ Navigate the world of online shopping with unmatched ease and comfort at 🦥 Sl
 ### Backend
 - **Express & Node.js**: Powering the server side with efficiency.
 - **MongoDB**: Flexible data storage.
-
-### Image Hosting
-- **AWS S3**: Securely storing and serving images.
+- **@aws-sdk/client-s3:** Interact with Amazon S3 for image hosting.
+- **multer:** Middleware for handling file uploads.
+- **aws-sdk:** AWS SDK for JavaScript, facilitating AWS service interactions.
+- **mongoose:** ODM library for MongoDB and Node.js.
 
 ### Payments
 - **Stripe**: Facilitating safe and seamless payment processing.
