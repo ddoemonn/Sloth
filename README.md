@@ -33,7 +33,6 @@ Navigate the world of online shopping with unmatched ease and comfort at 🦥 Sl
 - **Stripe**: Facilitating safe and seamless payment processing.
 
 ## Screenshots 
-Soon!
 ![Image 8 12 2023 at 01 58](https://github.com/ozergklp/Sloth/assets/109994179/f7d2e339-1623-4b6c-bc18-92b968ddbf7f)
 ![Image 8 12 2023 at 01 58 (1)](https://github.com/ozergklp/Sloth/assets/109994179/a00556bb-a850-490f-8e2e-dabde4ab36b2)
 ![Image 8 12 2023 at 01 59](https://github.com/ozergklp/Sloth/assets/109994179/f0c39526-57d5-4e9c-9ebb-c09bd0c2a3ee)
